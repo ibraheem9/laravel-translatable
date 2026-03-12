@@ -1,0 +1,49 @@
+{
+    "name": "ibraheem9/laravel-translatable",
+    "description": "A lightweight Laravel package for handling model translations using column-based approach. Automatically resolves translated attributes based on the current application locale.",
+    "keywords": [
+        "laravel",
+        "translation",
+        "translatable",
+        "multilingual",
+        "i18n",
+        "localization",
+        "eloquent"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ibraheem",
+            "email": "ibraheem@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "phpunit/phpunit": "^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ibraheem9\\Translatable\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ibraheem9\\Translatable\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ibraheem9\\Translatable\\TranslatableServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
