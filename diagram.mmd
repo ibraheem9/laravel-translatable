@@ -1,0 +1,40 @@
+graph TD
+    %% Styling
+    classDef model fill:#4F46E5,stroke:#312E81,stroke-width:2px,color:white,rx:10px,ry:10px;
+    classDef db fill:#059669,stroke:#047857,stroke-width:2px,color:white,rx:10px,ry:10px;
+    classDef config fill:#D97706,stroke:#B45309,stroke-width:2px,color:white,rx:10px,ry:10px;
+    classDef magic fill:#DB2777,stroke:#BE185D,stroke-width:2px,color:white,rx:10px,ry:10px;
+    classDef app fill:#2563EB,stroke:#1D4ED8,stroke-width:2px,color:white,rx:10px,ry:10px;
+
+    %% Nodes
+    A["App Locale<br/>app()->getLocale()"]:::app
+    B["Model<br/>use Translatable;"]:::model
+    C[("Database Table<br/>products")]:::db
+    D["Config<br/>translatable.php"]:::config
+    E["Magic Accessor<br/>$product->title"]:::magic
+
+    %% Connections
+    A -.->|Sets Language| E
+    B -->|Auto-detects| C
+    D -.->|Defines Locales<br/>en, ar| B
+    E -->|Resolves to| B
+
+    %% Database Columns
+    subgraph "Database Columns"
+        C1["title_en"]:::db
+        C2["title_ar"]:::db
+    end
+    C --- C1
+    C --- C2
+
+    %% Resolution Logic
+    subgraph "How it works"
+        R1{"Is Locale 'en'?"}
+        R2["Return title_en"]
+        R3["Return title_ar"]
+        
+        R1 -->|Yes| R2
+        R1 -->|No| R3
+    end
+    
+    E ==> R1
